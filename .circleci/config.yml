@@ -26,4 +26,6 @@ jobs:
       - run:
           name: dotnet standard project test
           command: dotnet test test/xpdfexecutor.UnitTest/
+      - run:
+          name: list folder contents
           command: ls -a test/xpdfexecutor.UnitTest/bin/Debug/netcoreapp2.1/
