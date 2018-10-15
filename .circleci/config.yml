@@ -22,7 +22,7 @@ jobs:
           command: apt-get install -y sudo
       - run:
           name: dotnet standard project test
-          command:sudo dotnet test test/hello-world-netstandard.UnitTest/
+          command: sudo dotnet test test/hello-world-netstandard.UnitTest/
       - run:
           name: dotnet standard project build
           command: dotnet build ./src/xpdfexecutor/
