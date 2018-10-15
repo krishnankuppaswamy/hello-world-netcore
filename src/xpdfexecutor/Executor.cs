@@ -48,6 +48,12 @@ namespace xpdfexecutor
             }
             catch { }
 
+            try
+            {
+                Exec($"chown -R $USER:$USER {fileName}");
+            }
+            catch { }
+
             var processStartInfo = new ProcessStartInfo(fileName, arguments);
             processStartInfo.RedirectStandardError = true;
             processStartInfo.UseShellExecute = false;
