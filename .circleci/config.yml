@@ -12,5 +12,11 @@ jobs:
           name: Print the Current Time
           command: date
       - run:
-          name: dotnet run project
+          name: dotnet core run project
           command: dotnet run --project ./src/hello-world-netcore/ CircleCI
+      - run:
+          name: dotnet standard run project
+          command: dotnet build ./src/hello-world-netstandard/
+      - run:
+          name: dotnet standard run project
+          command: dotnet test test/hello-world-netstandard.UnitTest/
