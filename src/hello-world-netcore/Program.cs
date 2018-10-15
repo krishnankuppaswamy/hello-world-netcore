@@ -6,7 +6,12 @@ namespace hello_world_netcore
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Hello World!");
+            if (args?.Length > 0)
+            {
+                Console.WriteLine($"Hello World! - {args[0]}");
+            }
+            else
+                Console.WriteLine("Hello World!");
         }
     }
 }
