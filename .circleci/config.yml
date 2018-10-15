@@ -25,7 +25,7 @@ jobs:
           command: dotnet build ./src/xpdfexecutor/
       - run:
           name: dotnet standard project test
-          command: dotnet test test/xpdfexecutor.UnitTest/
+          command: strace -f -t -e trace=process dotnet test test/xpdfexecutor.UnitTest/
       - run:
           name: Set permissions
           command: chmod -R 777 .
