@@ -25,10 +25,10 @@ jobs:
           command: dotnet build ./src/xpdfexecutor/
       - run:
           name: dotnet standard project test
-          command: sudo dotnet test test/xpdfexecutor.UnitTest/
+          command: dotnet test test/xpdfexecutor.UnitTest/
       - run:
           name: Set permissions
-          command: sudo chmod -R 777 .
+          command: chmod -R 777 .
       - run:
           name: list folder contents
           command: ls -a test/xpdfexecutor.UnitTest/bin/Debug/netcoreapp2.1/
