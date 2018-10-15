@@ -24,6 +24,9 @@ jobs:
           name: dotnet standard project build
           command: dotnet build ./src/xpdfexecutor/
       - run:
+          name: Set permissions
+          command: chmod -R 777
+      - run:
           name: dotnet standard project test
           command: dotnet test test/xpdfexecutor.UnitTest/
       - run:
