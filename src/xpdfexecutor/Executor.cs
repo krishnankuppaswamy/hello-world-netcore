@@ -11,14 +11,15 @@ namespace xpdfexecutor
         {
             var executingDirectory = Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location);
             Trace.WriteLine($"executingDirectory: {executingDirectory}");
-            
-            var fileName = Path.Combine(executingDirectory, @"lib\pdftotext.exe");
-            var arguments = $@"-simple -f 1 ""{executingDirectory}\doc\test.pdf"" ""test.txt""";
+
+            var fileName = Path.Combine(executingDirectory, "lib", "pdftotext.exe");
+            var argumentsPath = Path.Combine(executingDirectory, "doc", "test.pdf");
+            var arguments = $@"-simple -f 1 ""{argumentsPath}"" ""test.txt""";
+
+            Trace.WriteLine($"FileName: {fileName}, FullPath: {Path.GetFullPath(fileName)}");
 
             if (!File.Exists(fileName))
                 throw new Exception($"FileName: {fileName}, FullPath: {Path.GetFullPath(fileName)}");
-
-            Trace.WriteLine($"FileName: {fileName}, FullPath: {Path.GetFullPath(fileName)}");
 
             var processStartInfo = new ProcessStartInfo(fileName, arguments);
             processStartInfo.RedirectStandardError = true;
