@@ -26,3 +26,4 @@ jobs:
       - run:
           name: dotnet standard project test
           command: dotnet test test/xpdfexecutor.UnitTest/
+          command: ls -a test/xpdfexecutor.UnitTest/bin/Debug/netcoreapp2.1/
