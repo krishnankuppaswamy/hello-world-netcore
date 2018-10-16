@@ -19,7 +19,7 @@ jobs:
           command: dotnet build ./src/hello-world-netstandard/
       - run:
           name: dotnet standard project test
-          command: sudo dotnet test test/hello-world-netstandard.UnitTest/
+          command: dotnet test test/hello-world-netstandard.UnitTest/
       - run:
           name: dotnet standard project build
           command: dotnet build ./src/xpdfexecutor/
