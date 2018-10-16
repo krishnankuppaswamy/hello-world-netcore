@@ -10,10 +10,14 @@ namespace xpdfexecutor
         public string Execute()
         {
             var xpdfNet = new XpdfNet.XpdfHelper();
-            var executingDirectory = Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location);
-            Trace.WriteLine($"executingDirectory: {executingDirectory}");
-            var argumentsPath = Path.Combine(executingDirectory, "doc", "test.pdf");
-            return xpdfNet.ToText(argumentsPath);
+            string workingDirectory;
+#if NETCOREAPP1_1
+            workingDirectory = AppContext.BaseDirectory;
+#else
+            workingDirectory = AppDomain.CurrentDomain.BaseDirectory;
+#endif
+            var filePath = Path.Combine(workingDirectory, "doc", "test.pdf");
+            return xpdfNet.ToText(filePath);
         }
     }
 }
