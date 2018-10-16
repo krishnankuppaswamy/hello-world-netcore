@@ -6,10 +6,8 @@ jobs:
     steps:
       - checkout
       - run:
-          name: Greeting with date
-          command: |
-          echo Hello, world.
-          echo date
+          name: Greeting
+          command: echo Hello, world.
       - run:
           name: Print the Current Time
           command: date
