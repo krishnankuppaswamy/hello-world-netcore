@@ -1,34 +1,48 @@
-version: 2
+version: 2.1
 jobs:
   build:
+    working_directory: ~/tmp
+    - store_test_results:
+      path: test-results
     docker:
       - image: microsoft/dotnet
+    environment:
+      ENV: CI
+      TEST_REPORTS: /tmp/test-reports
+    working_directory: ~/BDS
+
+    branches:
+      only:
+        - master
+
     steps:
       - checkout
+
       - run:
-          name: Greeting
-          command: echo Hello, world.
+          name: Building source code
+          shell: /bin/bash
+          command: |
+          echo date
+          echo time
+          mkdir -p /tmp/
+          ls -alFR
+          echo Hello, world!
+          echo dotnet core run './src/hello-world-netcore/' project
+          dotnet run --project ./src/hello-world-netcore/ CircleCI
+          echo dotnet standard './src/hello-world-netstandard/' project build
+          dotnet build ./src/hello-world-netstandard/
+          echo dotnet standard './src/xpdfexecutor/' project build
+          dotnet build ./src/xpdfexecutor/
+          echo dotnet standard './src/UsingEPPlus/' project build
+          dotnet build ./src/UsingEPPlus/
+
       - run:
-          name: Print the Current Time
-          command: date
-      - run:
-          name: dotnet core run project
-          command: dotnet run --project ./src/hello-world-netcore/ CircleCI
-      - run:
-          name: dotnet standard project build
-          command: dotnet build ./src/hello-world-netstandard/
-      - run:
-          name: dotnet standard project test
-          command: dotnet test test/hello-world-netstandard.UnitTest/
-      - run:
-          name: dotnet standard project build
-          command: dotnet build ./src/xpdfexecutor/
-      - run:
-          name: dotnet standard project test
-          command: dotnet test test/xpdfexecutor.UnitTest/
-      - run:
-          name: dotnet standard project build
-          command: dotnet build ./src/UsingEPPlus/
-      - run:
-          name: dotnet standard project test
-          command: dotnet test test/UsingEPPlus.UnitTest/
+          name: Executing tests
+          command: |
+          mkdir -p ${TEST_REPORTS}
+          echo dotnet standard './test/hello-world-netstandard.UnitTest/' project test
+          dotnet test ./test/hello-world-netstandard.UnitTest/
+          echo dotnet standard './test/xpdfexecutor.UnitTest/' project test
+          dotnet test ./test/xpdfexecutor.UnitTest/
+          echo dotnet standard './test/UsingEPPlus.UnitTest/' project test
+          dotnet test ./test/UsingEPPlus.UnitTest/
