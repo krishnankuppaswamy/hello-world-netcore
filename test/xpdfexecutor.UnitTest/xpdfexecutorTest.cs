@@ -1,3 +1,4 @@
+using System;
 using Xunit;
 
 namespace xpdfexecutor.UnitTest
@@ -11,7 +12,7 @@ namespace xpdfexecutor.UnitTest
 
             var actual = xpdfexecutor.Execute();
 
-            Assert.Equal("This is first line!\r\n\r\n\f", actual);
+            Assert.Equal($"This is first line!{Environment.NewLine}{Environment.NewLine}\f", actual);
         }
     }
 }
