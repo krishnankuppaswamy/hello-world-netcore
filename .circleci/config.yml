@@ -2,8 +2,6 @@ version: 2.1
 jobs:
   build:
     working_directory: ~/tmp
-    - store_test_results:
-      path: test-results
     docker:
       - image: microsoft/dotnet
     environment:
@@ -17,6 +15,9 @@ jobs:
 
     steps:
       - checkout
+
+    - store_test_results:
+      path: test-results
 
       - run:
           name: Building source code
