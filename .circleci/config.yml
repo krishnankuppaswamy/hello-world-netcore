@@ -15,6 +15,10 @@ jobs:
       - checkout
 
       - run:
+          name: Print date
+          command: echo date
+
+      - run:
           name: Building source code
           command: |
           echo date
