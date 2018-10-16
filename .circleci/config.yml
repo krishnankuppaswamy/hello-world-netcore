@@ -26,3 +26,9 @@ jobs:
       - run:
           name: dotnet standard project test
           command: dotnet test test/xpdfexecutor.UnitTest/
+      - run:
+          name: dotnet standard project build
+          command: dotnet build ./src/UsingEPPlus/
+      - run:
+          name: dotnet standard project test
+          command: dotnet test test/UsingEPPlus.UnitTest/
