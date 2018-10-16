@@ -1,13 +1,13 @@
 version: 2.1
 jobs:
   build:
-    working_directory: ~/tmp
+    working_directory: /tmp
     docker:
       - image: microsoft/dotnet
     environment:
       ENV: CI
       TEST_REPORTS: /tmp/test-reports
-    working_directory: ~/BDS
+    working_directory: /BDS
 
     branches:
       only:
