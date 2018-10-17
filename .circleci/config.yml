@@ -4,10 +4,10 @@ jobs:
     docker:
       - image: microsoft/dotnet
     steps:
-      - checkout
       - run:
           name: Show folder content before checkout
           command: ls -lFR
+      - checkout
       - run:
           name: Show folder content after checkout
           command: ls -lFR
@@ -43,7 +43,7 @@ jobs:
           command: dotnet build ./src/FileOps/
       - run:
           name: dotnet standard './test/FileOps.UnitTest' project test
-          command: dotnettest ./test/FileOps.UnitTest/
+          command: dotnet test ./test/FileOps.UnitTest/
       - run:
           name: Show folder content after all executions
           command: ls -lFR
