@@ -12,6 +12,9 @@ jobs:
           name: Print the Current Time
           command: date
       - run:
+          name: Show folder content
+          command: ls -al
+      - run:
           name: dotnet core run project
           command: dotnet run --project ./src/hello-world-netcore/ CircleCI
       - run:
