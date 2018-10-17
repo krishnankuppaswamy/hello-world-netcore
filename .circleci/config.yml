@@ -47,3 +47,11 @@ jobs:
       - run:
           name: Show folder content after all executions
           command: ls -lFR
+      - store_artifacts:
+          name: Uploading NuGet packages as artifacts
+          path: artifacts/packages
+          destination: packages
+      - store_artifacts:
+          name: Uploading xUnit test results as artifacts
+          path: artifacts/tests-results
+          destination: tests-results-xunit
