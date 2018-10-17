@@ -13,7 +13,7 @@ jobs:
           command: date
       - run:
           name: Show folder content
-          command: ls -al
+          command: ls -alFR
       - run:
           name: dotnet core run project
           command: dotnet run --project ./src/hello-world-netcore/ CircleCI
