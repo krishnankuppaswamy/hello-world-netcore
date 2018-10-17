@@ -6,32 +6,44 @@ jobs:
     steps:
       - checkout
       - run:
+          name: Show folder content before checkout
+          command: ls -lFR
+      - run:
+          name: Show folder content after checkout
+          command: ls -lFR
+      - run:
           name: Greeting
           command: echo Hello, world.
       - run:
           name: Print the Current Time
           command: date
       - run:
-          name: Show folder content
-          command: ls -alFR
-      - run:
-          name: dotnet core run project
+          name: dotnet core run './src/hello-world-netcore/' project
           command: dotnet run --project ./src/hello-world-netcore/ CircleCI
       - run:
-          name: dotnet standard project build
+          name: dotnet standard './src/hello-world-netstandard/' project build
           command: dotnet build ./src/hello-world-netstandard/
       - run:
-          name: dotnet standard project test
-          command: dotnet test test/hello-world-netstandard.UnitTest/
+          name: dotnet standard './test/hello-world-netstandard.UnitTest/' project test
+          command: dotnet test ./test/hello-world-netstandard.UnitTest/
       - run:
-          name: dotnet standard project build
+          name: dotnet standard './src/xpdfexecutor/' project build
           command: dotnet build ./src/xpdfexecutor/
       - run:
-          name: dotnet standard project test
-          command: dotnet test test/xpdfexecutor.UnitTest/
+          name: dotnet standard './test/xpdfexecutor.UnitTest/' project test
+          command: dotnet test ./test/xpdfexecutor.UnitTest/
       - run:
-          name: dotnet standard project build
+          name: dotnet standard './src/UsingEPPlus/' project build
           command: dotnet build ./src/UsingEPPlus/
       - run:
-          name: dotnet standard project test
-          command: dotnet test test/UsingEPPlus.UnitTest/
+          name: dotnet standard './test/UsingEPPlus.UnitTest/' project test
+          command: dotnet test ./test/UsingEPPlus.UnitTest/
+      - run:
+          name: dotnet standard './src/FileOps/' project build
+          command: dotnet build ./src/FileOps/
+      - run:
+          name: dotnet standard './test/FileOps.UnitTest' project test
+          command: dotnettest ./test/FileOps.UnitTest/
+      - run:
+          name: Show folder content after all executions
+          command: ls -lFR
